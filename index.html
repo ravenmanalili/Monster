@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The Adventures of Raven</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="monster.css">
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="title">
+            The Adventures of Raven
+        </div><br>
+        <div class="form">
+            <div class="input_field">
+                <label for="">Round</label>
+                <input type="text" class="input" id="round" value="0">
+            </div>
+            <div class="input_field">
+                <label for="">Monster's Health</label>
+                <input type="text" class="input" id="monsterHp" value="1000">
+            </div>
+            <div class="input_field">
+                <label for="">Attack</label>
+                <input type="text" class="input" id="attack" value="100">
+            </div>
+            <div class="input_field">
+                <label for="">Bonus Damage</label>
+                <input type="text" class="input" id="bonusDamage" value="?">
+            </div>
+            <div class="input_field">
+                <label for="">Critical</label>
+                <input type="text" class="input" id="critical" value="?">
+            </div>
+            <div class="input_field">
+                <label>Adventure Log</label>
+                <textarea class="textarea" id="comment">Make your First Attack!</textarea>
+            </div>
+            <div class="inputfield">
+                <input type="submit" onclick="attackMonster()" value="Attack Monster" class="btn" id="attackbtn">
+            </div>
+
+
+        </div>
+    </div>
+    <!-- END OF WRAPPER DIV-->
+    <!-- Start of Monster Container-->
+    <div class="monster">
+        <div class="hit-points" id="hitPoints">
+            <div class="hp-bar" id="hpBar">
+                <div class="actual-hp" id=""hpNum>100%</div>
+            </div>
+        </div>
+        <!-- montster image-->
+        <div class="monstere-img">
+            <img width="100%"
+                src="https://media.gettyimages.com/id/165597554/vector/giant-monster.jpg?s=612x612&w=gi&k=20&c=uKkcfXeJ7aPEOUYC61vDdxRzsWA0sNkFZrUCNpod82g=">
+        </div>
+    </div>
+
+
+    <script>
+        var round = 0;
+        var monsterHp = 1000;
+        var maxHp = monsterHp;
+        var attack = 100;
+        var hpPercentage = 100;
+
+        function attackMonster() {
+            round++;
+            var bonusDamage = Math.round(Math.random() * 100);
+            var critical = Math.round(Math.random() * 100);
+
+
+            monsterHp -= attack + bonusDamage;
+
+            var roundElement = document.getElementById("round")
+            var monsterHpElement = document.getElementById("monsterHp")
+            var attackElement = document.getElementById("attack")
+            var bonusDamageElement = document.getElementById("bonusDamage")
+            var criticalElement = document.getElementById("critical")
+            var commentElement = document.getElementById("comment")
+            var hpPercentageElement = document.getElementById("hpBar")
+
+            roundElement.value = round;
+            monsterHpElement.value = monsterHp;
+            attackElement.value = attack;
+            bonusDamageElement.value = bonusDamage;
+            criticalElement.value = critical;
+
+
+
+            var comment = "You have hit the monster with " + (attack + bonusDamage) + " points.";
+
+            hpPercentage = monsterHp / maxHp * 100;
+            hpBar.style.width = hpPercentage + "%";
+
+            if (critical <= 10) {
+                criticalHit();
+                comment = "You have used your ultimate skill!";
+            }
+
+            else {
+                if (bonusDamage <= 10) {
+                    missedAtk();
+                }
+                monsterStatus();
+            }
+            commentElement.value = comment;
+
+        }
+        
+
+        function monsterStatus() {
+            if (monsterHp <= 0) {
+                var btn = document.querySelector('.btn');
+                btn.disabled = true;
+                btn.style.backgroundColor = "lightgreen";
+                btn.value = "CONGRATULATIONS! YOU HAVE DEFEATED THE MONSTER!"
+                var commentElement = document.getElementById("comment");
+                commentElement.value = "Monster's health is now on zero.";
+                hpPercentage = 0;
+                hpBar.style.width = hpPercentage + "%";
+                hitPoints.style.backgroundColor = "pink";
+
+
+            }
+        }
+
+        function criticalHit() {
+            monsterHp = 0;
+            var btn = document.querySelector('.btn');
+            btn.disabled = true;
+            btn.style.backgroundColor = "lightgreen";
+            btn.value = "Critical Hit! The Monster just died!"
+            var monsterHpElement = document.getElementById("monsterHp")
+            monsterHpElement.value = monsterHp;
+            hpPercentage = 0;
+            hpBar.style.width = hpPercentage + "%";
+            hitPoints.style.backgroundColor = "pink";
+
+            return 0;
+
+
+        }
+
+        function missedAtk() {
+
+            alert("Attack Missed! The Monster has regenerated its health!")
+            var monsterHpElement = document.getElementById("monsterHp")
+            monsterHp += 300;
+            monsterHpElement.value = monsterHp;
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+body {
+  background-image: url("https://wallpapercave.com/wp/wp7170402.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  /* Reset default margin */
+  padding: 0;
+  /* Reset default padding */
+
+}
+
+.wrapper {
+  max-width: 500px;
+  width: 100%;
+
+  background: skyblue;
+  margin: 20px auto;
+  box-shadow: 1px 1px 2px rgba(10, 0, 0, 0.125);
+  padding: 10px;
+  border-radius: 15px;
+  opacity: 0.8;
+}
+
+.wrapper .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: rgb(14, 115, 146);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.wrapper .form {
+  width: 100%;
+}
+
+.wrapper .form .input_field {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .form .input_field label {
+  width: 200px;
+  color: #202020;
+  margin-right: 20px;
+  font-size: 20px;
+  font-style: bold;
+  padding-left: 50px;
+}
+
+
+
+.wrapper .form .inputfield .textarea {
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+
+
+}
+
+.wrapper .form .inputfield .btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 0px;
+  background: #fec107;
+  color: black;
+  cursor: pointer;
+  border-radius: 25px;
+  outline: none;
+}
+
+#comment {
+  width: 200px;
+}
+
+.monster {
+  width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.hit-points {
+  width: calc(100% - 2px);
+  height: 30px;
+  background: #888;
+  position: relative;
+  border: 1px solid black;
+}
+
+.hp-bar {
+  position: absolute;
+  /* 
+    top: 5px;
+    left: 5px;
+    width: 50%;
+    height: 20px;
+    */
+  width: 100%;
+  height: 100%;
+  background-color: green;
+
+
+}
+.actual-hp{
+  display: flex;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  height: 100%;
+
+}
